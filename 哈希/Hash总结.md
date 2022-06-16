@@ -61,10 +61,9 @@ class Solution {
 
 ---
 
-#### 四数之和的思路和三数之和一样，也是排序和双指针的思路，只不过因为是四数之和，所以需要三层循环才能够解决
-
 [LeetCode18:四数之和](https://leetcode.com/problems/4sum/)
 
+#### 四数之和的思路和三数之和一样，也是排序和双指针的思路，只不过因为是四数之和，所以需要三层循环才能够解决
 
 ```java
 class Solution {
@@ -102,4 +101,27 @@ class Solution {
 }
 ```
 
-TODO
+---
+
+[LeetCode454:四数之和Ⅱ](https://leetcode.com/problems/4sum-ii/)
+
+#### 四数之和Ⅱ和四数之和虽然都是求四个数的和，让其相加为某一个数，但是四数之和Ⅱ和四数之和又是完全不同的一类题目，四数之和Ⅱ更中的四个数字分别来自四个数组，且没有要求需要去重，即最后的三元组可以是重复的，使用 HashMap 将原本的四重循环拆分为 两个 二重循环，就是一个很直接而且高效的思路
+
+```java
+class Solution {
+    public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int num1 : nums1)
+            for(int num2 : nums2)
+                map.put(num1 + num2, map.getOrDefault(num1 + num2, 0) + 1);
+        
+        int res = 0;
+        for(int num1 : nums3)
+            for(int num2 : nums4)
+                res += map.getOrDefault(-(num1 + num2), 0);
+        
+        return res;
+    }
+}
+```
