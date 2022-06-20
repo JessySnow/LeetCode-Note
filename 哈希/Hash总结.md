@@ -125,3 +125,29 @@ class Solution {
     }
 }
 ```
+
+---
+
+[LeetCode383:赎金信件](https://leetcode.com/problems/ransom-note/)
+
+#### 这题就是一道可以使用数组进行 Hash 的题目，一般这类题目都有一个很明显的特征就是给定的元素的种类是有限的，比如本题中信件中的字母只有 26 个小写字母，那么使用一个大小为 26 的数组装下所有的字母和字母个数的映射即可
+
+```java
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        int[] count = new int[26];
+        
+        for(char ch : ransomNote.toCharArray())
+            count[ch - 'a'] ++;
+        
+        for(char ch : magazine.toCharArray())
+            count[ch - 'a'] --;
+    
+        for(int i = 0; i < count.length; ++ i)
+            if(count[i] > 0)
+                return false;
+        
+        return true;
+    }
+}
+```
