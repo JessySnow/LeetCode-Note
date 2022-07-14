@@ -66,6 +66,8 @@ class Solution {
 
 #### 四数之和的思路和三数之和一样，也是排序和双指针的思路，只不过因为是四数之和，所以需要三层循环才能够解决
 
+#### 7月14日更新，最近新增的几个用例会导致溢出，但是总体的思路是对的
+
 ```java
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
